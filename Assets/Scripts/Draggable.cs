@@ -45,10 +45,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         }
 
         int newSiblingIndex = placeholderParent.childCount;
-
-        for(int i = 0; i < placeholderParent.childCount; i++)
+        
+        for (int i = 0; i < placeholderParent.childCount; i++)
         {
-            if(transform.position.x < placeholderParent.GetChild(i).position.x)
+            if (transform.position.x < placeholderParent.GetChild(i).position.x)
             {
                 newSiblingIndex = i;
 

@@ -11,6 +11,7 @@ public class CardDisplay : MonoBehaviour {
     public Text descriptionText;
 
     public Image artworkImage;
+    public Image cardBackImage;
 
     public Text costText;
     public Text attackText;
@@ -20,10 +21,16 @@ public class CardDisplay : MonoBehaviour {
         nameText.text = card.name;
         descriptionText.text = card.description;
 
-        artworkImage.sprite = card.Artwork;
+        artworkImage.sprite = card.artwork;
+        cardBackImage.sprite = card.cardBack;
 
         costText.text = card.cost.ToString();
         attackText.text = card.attack.ToString();
         healthText.text = card.health.ToString();
 	}
+
+    public void TurnCard()
+    {
+       transform.Find("Back").gameObject.SetActive(false);
+    }
 }

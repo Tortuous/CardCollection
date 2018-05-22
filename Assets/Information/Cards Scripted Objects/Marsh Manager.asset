@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea0e988d884e8484e8d3ed36ca66a841, type: 3}
+  m_Name: Marsh Manager
+  m_EditorClassIdentifier: 
+  rarity: 3
+  cardType: 0
+  name: Marsh Manager
+  description: manages the marsh
+  cardID: 5
+  percentage: 1
+  artwork: {fileID: 21300000, guid: 4e0ba64941c15b94482cf11285a70925, type: 3}
+  cardBack: {fileID: 21300000, guid: 441eeeeedffd6f346a1117f4a4795f6c, type: 3}
+  cost: 5
+  attack: 6
+  health: 2
+  sellValue: 400
