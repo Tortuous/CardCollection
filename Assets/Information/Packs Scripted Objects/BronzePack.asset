@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Name: BronzePack
   m_EditorClassIdentifier: 
   tier: 0
+  cards:
+  - {fileID: 1792474425993542, guid: c9f3a48c8177690488f16f64e10d3488, type: 2}
+  - {fileID: 1822149366761384, guid: e9aeb6e44157be640a2e22f5057f268d, type: 2}
+  - {fileID: 1818545555027994, guid: dc26206194a92014cb94e608c932b984, type: 2}
+  - {fileID: 1103835982856310, guid: d6f51e4d8a9b52641883d1f42f50dd61, type: 2}
+  - {fileID: 1322474544709846, guid: 8cd16a51fce2be444bf2d7b97b0c2384, type: 2}
+  - {fileID: 1637605768088902, guid: 1cb0ba376ac5a0d47b0139650d109fda, type: 2}
+  - {fileID: 1486926550465450, guid: 71818fbfe4c21a947a81b8965cb72245, type: 2}
   artwork: {fileID: 21300000, guid: c9b72676e8cd8094392c6c63cbba6bf2, type: 3}
+  cardsContained: 4

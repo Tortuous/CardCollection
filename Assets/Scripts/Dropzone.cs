@@ -6,7 +6,19 @@ using UnityEngine.EventSystems;
 public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
     public Draggable.Slot typeOfItem = Draggable.Slot.INVENTORY;
-    public PackOpening packOpening;
+    public PackOpening packOpening = null;
+
+    public GameObject openingArea;
+
+    public int children = 0;
+
+    public int stop = 0;
+
+    public void Start()
+    {
+        if (openingArea != null)
+            children = openingArea.transform.childCount;
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -46,10 +58,18 @@ public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
         if (d != null)
         {
-            if (typeOfItem == d.typeOfItem || typeOfItem == Draggable.Slot.SHOP)
+            if(stop == 0)
             {
-                d.parentToReturnTo = this.transform;
-                StartCoroutine(packOpening.Open());
+                if (typeOfItem == d.typeOfItem || typeOfItem == Draggable.Slot.SHOP)
+                {
+                    stop++;
+                    d.parentToReturnTo = this.transform;
+                    StartCoroutine(gameObject.GetComponent<PackOpening>().Open());
+                    //StartCoroutine(packOpening.Open());
+
+                    Destroy(d.gameObject);
+                    stop = 0;
+                }
             }
         }
     }
