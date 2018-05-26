@@ -17,7 +17,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("began drag");
-
         placeholder = new GameObject();
         placeholder.transform.SetParent(transform.parent);
         LayoutElement le = placeholder.AddComponent<LayoutElement>();
@@ -37,6 +36,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
+
         transform.position = eventData.position;
 
         if(placeholder.transform.parent != placeholderParent)

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0e988d884e8484e8d3ed36ca66a841, type: 3}
   m_Name: Marsh Manager
   m_EditorClassIdentifier: 
-  rarity: 3
+  rarity: 2
   cardType: 0
   name: Marsh Manager
   description: manages the marsh

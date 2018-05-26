@@ -4,39 +4,39 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PackOpening : MonoBehaviour {
-
     public Button addToCollection;
+    public GameObject prefabCard;
+    public Pack packScript = null;
+    Card randomCard;
 
-    public Pack packScript;
-
-    public GameObject randomPrefabCard;
-
-    public void Start()
+    public Dropzone dropzone;
+    public Transform[] cardPositions;
+    
+    Card RandomizeCard(List<Card> cards)
     {
-        Debug.Log(packScript.cardsContained + " this is card amount");
-    }
+        randomCard = cards[Random.Range(0, cards.Count)];
 
-    GameObject RandomizeCard(List<GameObject> cards)
-    {
-        randomPrefabCard = cards[Random.Range(0, cards.Count)];
-
-        Debug.Log(randomPrefabCard);
-        return randomPrefabCard;
+        Debug.Log(randomCard);
+        return randomCard;
     }
 
     public IEnumerator Open()
     {
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
+        Destroy(dropzone.d.gameObject);
+        dropzone.stop = 0;
 
         for (int i = 0; i < packScript.cardsContained; i++)
         {
             Debug.Log(RandomizeCard(packScript.cards));
             RandomizeCard(packScript.cards);
-            GameObject packCard = Instantiate(randomPrefabCard, transform.position, transform.rotation);
+            GameObject packCard = Instantiate(prefabCard, transform.position, transform.rotation);
             packCard.transform.SetParent(transform);
+            packCard.GetComponent<CardDisplay>().card = randomCard;
+            packCard.transform.localScale = new Vector3(1, 1, 1);
         }
-
+        PlayerPrefs.Save();
         yield return null;
     }
 }

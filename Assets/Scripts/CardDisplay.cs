@@ -16,8 +16,11 @@ public class CardDisplay : MonoBehaviour {
     public Text costText;
     public Text attackText;
     public Text healthText;
+    
+    PlayerInformation playerInformation;
 
 	void Start () {
+
         nameText.text = card.name;
         descriptionText.text = card.description;
 
