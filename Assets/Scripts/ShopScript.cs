@@ -43,6 +43,7 @@ public class ShopScript : MonoBehaviour {
             playerInformation.bronzePacks++;
             GameObject packInst = Instantiate(bronzePackPrefab, transform.position, transform.rotation);
             packInst.transform.SetParent(packArea.transform);
+            packInst.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
@@ -54,6 +55,7 @@ public class ShopScript : MonoBehaviour {
             playerInformation.silverPacks++;
             GameObject packInst = Instantiate(silverPackPrefab, transform.position, transform.rotation);
             packInst.transform.SetParent(packArea.transform);
+            packInst.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 

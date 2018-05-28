@@ -22,5 +22,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc3295e7c3c39ac4a8d25ccd45ec4017, type: 2}
   - {fileID: 11400000, guid: ac363c8e0c9d6a64099c7f20df1e9f10, type: 2}
   - {fileID: 11400000, guid: 8b0bff12670d40c4bb610477616a0621, type: 2}
-  artwork: {fileID: 21300000, guid: 42e307f402edb4b4f83acbc2c3b935df, type: 3}
+  artwork: {fileID: 21300000, guid: f409d6c129e4f034096975b4012d8cf3, type: 3}
   cardsContained: 6

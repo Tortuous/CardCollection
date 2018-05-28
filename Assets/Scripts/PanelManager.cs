@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PanelManager : MonoBehaviour {
 
@@ -25,5 +23,11 @@ public class PanelManager : MonoBehaviour {
     public void ClosePackOpening()
     {
         pack.SetActive(false);
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }

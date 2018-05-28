@@ -18,7 +18,7 @@ MonoBehaviour:
   cardID: 2
   percentage: 40
   artwork: {fileID: 21300000, guid: 90c1680fea43cb84a8bdf3dd68380f41, type: 3}
-  cardBack: {fileID: 21300000, guid: 441eeeeedffd6f346a1117f4a4795f6c, type: 3}
+  cardBack: {fileID: 21300000, guid: e291d3e0601671f48a4a2824d04d5c40, type: 3}
   cost: 4
   attack: 2
   health: 2
