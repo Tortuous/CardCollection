@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Name: SilverPack
   m_EditorClassIdentifier: 
   tier: 1
-  cards:
-  - {fileID: 11400000, guid: 8a8a923e4bbd5ec4188aade730eabf96, type: 2}
-  - {fileID: 11400000, guid: bf7b562f4ca44d641a18ce5083d0fdfc, type: 2}
+  commons:
   - {fileID: 11400000, guid: c7b2deb66d8c36d499678cd404d94864, type: 2}
   - {fileID: 11400000, guid: 2463e0b0c59fad44fbde18e224f5fa9e, type: 2}
   - {fileID: 11400000, guid: 2493304c4584a6e4fa4c7808de274b3d, type: 2}
+  rares:
+  - {fileID: 11400000, guid: bf7b562f4ca44d641a18ce5083d0fdfc, type: 2}
   - {fileID: 11400000, guid: 4e1e478a62846ed428d51789dd0994fa, type: 2}
   - {fileID: 11400000, guid: cc3295e7c3c39ac4a8d25ccd45ec4017, type: 2}
+  epics:
+  - {fileID: 11400000, guid: 8a8a923e4bbd5ec4188aade730eabf96, type: 2}
   - {fileID: 11400000, guid: ac363c8e0c9d6a64099c7f20df1e9f10, type: 2}
   - {fileID: 11400000, guid: 8b0bff12670d40c4bb610477616a0621, type: 2}
   artwork: {fileID: 21300000, guid: 3cc8e4518c88e6e4a8331df5908637c5, type: 3}

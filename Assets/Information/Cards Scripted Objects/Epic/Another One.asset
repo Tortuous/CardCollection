@@ -11,12 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0e988d884e8484e8d3ed36ca66a841, type: 3}
   m_Name: Another One
   m_EditorClassIdentifier: 
-  rarity: 3
+  rarity: 2
   cardType: 0
   name: Another One
   description: it keeps going
-  cardID: 3
+  cardID: 5
   percentage: 1
+  raritySprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   artwork: {fileID: 21300000, guid: 147071f68d7fc27449201458aa09a425, type: 3}
   cardBack: {fileID: 21300000, guid: e291d3e0601671f48a4a2824d04d5c40, type: 3}
   cost: 10

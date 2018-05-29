@@ -27,7 +27,7 @@ public class PanelManager : MonoBehaviour {
 
     public void CloseGame()
     {
+        PlayerPrefs.Save();
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
     }
 }

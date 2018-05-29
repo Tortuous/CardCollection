@@ -15,8 +15,9 @@ MonoBehaviour:
   cardType: 0
   name: Beefy
   description: is very tanky
-  cardID: 4
+  cardID: 6
   percentage: 10
+  raritySprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   artwork: {fileID: 21300000, guid: f4a7581d7ffe3894cb9cac3a1037f69a, type: 3}
   cardBack: {fileID: 21300000, guid: e291d3e0601671f48a4a2824d04d5c40, type: 3}
   cost: 5

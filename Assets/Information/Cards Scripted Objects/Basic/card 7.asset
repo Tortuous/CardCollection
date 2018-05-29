@@ -15,8 +15,9 @@ MonoBehaviour:
   cardType: 1
   name: card 7
   description: it keeps going
-  cardID: 7
+  cardID: 1
   percentage: 40
+  raritySprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   artwork: {fileID: 21300000, guid: cc42d8c7f59a8ec47a33aaae376aaf1e, type: 3}
   cardBack: {fileID: 21300000, guid: e291d3e0601671f48a4a2824d04d5c40, type: 3}
   cost: 7

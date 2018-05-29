@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New", menuName = "Card")]
 public class Card : ScriptableObject {
 
-    public enum Rarity { Basic, Rare, Epic, Legendary };
+    public enum Rarity { Basic, Rare, Epic};
     public Rarity rarity;
     public enum CardType { Minion, Spell, Hero };
     public CardType cardType;
@@ -14,7 +14,8 @@ public class Card : ScriptableObject {
     public string description;
     public string cardID;
     public float percentage;
-    
+
+    public Sprite raritySprite;
     public Sprite artwork;
     public Sprite cardBack;
 

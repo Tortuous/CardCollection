@@ -15,8 +15,9 @@ MonoBehaviour:
   cardType: 0
   name: card 6
   description: card 6
-  cardID: 6
+  cardID: 0
   percentage: 40
+  raritySprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   artwork: {fileID: 21300000, guid: 840a7f4b9127fe34ba6a07a9d97d2ef7, type: 3}
   cardBack: {fileID: 21300000, guid: e291d3e0601671f48a4a2824d04d5c40, type: 3}
   cost: 1

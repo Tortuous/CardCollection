@@ -15,8 +15,9 @@ MonoBehaviour:
   cardType: 1
   name: Feral Spirit
   description: Summon two minions
-  cardID: 1
+  cardID: 8
   percentage: 10
+  raritySprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   artwork: {fileID: 21300000, guid: e62c9e2da431dc5418c49db56b720003, type: 3}
   cardBack: {fileID: 21300000, guid: e291d3e0601671f48a4a2824d04d5c40, type: 3}
   cost: 3

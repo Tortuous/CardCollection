@@ -40,7 +40,10 @@ public class ShopScript : MonoBehaviour {
         if (playerInformation.coins >= 100)
         {
             playerInformation.coins -= 100;
+            PlayerPrefs.SetInt("coins", playerInformation.coins);
             playerInformation.bronzePacks++;
+            PlayerPrefs.SetInt("bronzePacks", playerInformation.bronzePacks);
+
             GameObject packInst = Instantiate(bronzePackPrefab, transform.position, transform.rotation);
             packInst.transform.SetParent(packArea.transform);
             packInst.transform.localScale = new Vector3(1, 1, 1);
@@ -52,7 +55,10 @@ public class ShopScript : MonoBehaviour {
         if(playerInformation.coins >= 200)
         {
             playerInformation.coins -= 200;
+            PlayerPrefs.SetInt("coins", playerInformation.coins);
             playerInformation.silverPacks++;
+            PlayerPrefs.SetInt("silverPacks", playerInformation.silverPacks);
+
             GameObject packInst = Instantiate(silverPackPrefab, transform.position, transform.rotation);
             packInst.transform.SetParent(packArea.transform);
             packInst.transform.localScale = new Vector3(1, 1, 1);
@@ -64,7 +70,10 @@ public class ShopScript : MonoBehaviour {
         if (playerInformation.coins >= 300)
         {
             playerInformation.coins -= 300;
+            PlayerPrefs.SetInt("coins", playerInformation.coins);
             playerInformation.goldPacks++;
+            PlayerPrefs.SetInt("goldPacks", playerInformation.goldPacks);
+
             GameObject packInst = Instantiate(goldPackPrefab, transform.position, transform.rotation);
             packInst.transform.SetParent(packArea.transform);
             packInst.transform.localScale = new Vector3(1, 1, 1);

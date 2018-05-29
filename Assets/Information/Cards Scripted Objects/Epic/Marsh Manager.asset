@@ -15,8 +15,9 @@ MonoBehaviour:
   cardType: 0
   name: Marsh Manager
   description: manages the marsh
-  cardID: 5
+  cardID: 3
   percentage: 1
+  raritySprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   artwork: {fileID: 21300000, guid: 4e0ba64941c15b94482cf11285a70925, type: 3}
   cardBack: {fileID: 21300000, guid: e291d3e0601671f48a4a2824d04d5c40, type: 3}
   cost: 5

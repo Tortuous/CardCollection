@@ -10,6 +10,7 @@ public class CardDisplay : MonoBehaviour {
     public Text nameText;
     public Text descriptionText;
 
+    public Image rarityImage;
     public Image artworkImage;
     public Image cardBackImage;
 
@@ -24,13 +25,27 @@ public class CardDisplay : MonoBehaviour {
         nameText.text = card.name;
         descriptionText.text = card.description;
 
+        rarityImage.sprite = card.raritySprite;
         artworkImage.sprite = card.artwork;
         cardBackImage.sprite = card.cardBack;
 
         costText.text = card.cost.ToString();
         attackText.text = card.attack.ToString();
         healthText.text = card.health.ToString();
-	}
+
+        if (card.rarity == Card.Rarity.Rare)
+        {
+            rarityImage.color = Color.blue;
+        }
+        else if (card.rarity == Card.Rarity.Basic)
+        {
+            rarityImage.color = Color.white;
+        }
+        else if (card.rarity == Card.Rarity.Epic)
+        {
+            rarityImage.color = Color.magenta;
+        }
+    }
 
     public void TurnCard()
     {

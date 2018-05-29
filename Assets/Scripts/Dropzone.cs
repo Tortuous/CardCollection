@@ -11,7 +11,7 @@ public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     public Draggable d = null;
 
     public GameObject openingArea;
-    public Button addToCollection;
+    public PlayerInformation playerInformation;
 
     public int children = 0;
 
@@ -21,6 +21,12 @@ public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     {
         if (openingArea != null)
             children = openingArea.transform.childCount;
+    }
+    public void Update()
+    {
+        if (gameObject.tag == "OpeningArea")
+            if(transform.childCount == 0)
+                stop = 0;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -34,6 +40,15 @@ public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             if (typeOfItem == d.typeOfItem || typeOfItem == Draggable.Slot.INVENTORY)
             {
                 d.placeholderParent = this.transform;
+            }
+        }
+
+        if (eventData.pointerEnter.GetComponent<Draggable>().tag == "Card")
+        {
+            if(Input.GetKeyDown(KeyCode.S)){
+                playerInformation.coins += d.GetComponent<CardDisplay>().card.sellValue;
+                PlayerPrefs.SetInt("coins", playerInformation.coins);
+                Destroy(d.gameObject);
             }
         }
     }
@@ -61,16 +76,14 @@ public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         d = eventData.pointerDrag.GetComponent<Draggable>();
         if (d != null)
         {
-            if(stop == 0)
+            if (stop == 0)
             {
                 if (typeOfItem == d.typeOfItem)
                 {
                     stop++;
                     d.parentToReturnTo = this.transform;
-                    addToCollection.gameObject.SetActive(true);
                     openingArea.GetComponent<PackOpening>().packScript = eventData.pointerDrag.gameObject.GetComponent<PackDisplay>().pack;
                     StartCoroutine(gameObject.GetComponent<PackOpening>().Open());
-                   
                 }
             }
         }

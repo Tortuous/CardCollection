@@ -8,7 +8,9 @@ public class Pack : ScriptableObject {
     public enum Tier { Bronze, Silver, Gold };
     public Tier tier;
 
-    public List<Card> cards = new List<Card>();
+    public List<Card> commons = new List<Card>();
+    public List<Card> rares = new List<Card>();
+    public List<Card> epics = new List<Card>();
 
     public Sprite artwork;
 
