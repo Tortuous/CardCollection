@@ -7,6 +7,10 @@ public class ShopScript : MonoBehaviour {
     public PlayerInformation playerInformation;
     public GameObject packArea;
 
+    public AudioSource audioSource;
+    public AudioClip audioClip1;
+    public AudioClip ffClip;
+
     public GameObject bronzePackPrefab;
     public GameObject silverPackPrefab;
     public GameObject goldPackPrefab;
@@ -16,6 +20,8 @@ public class ShopScript : MonoBehaviour {
 
     public void Bronze()
     {
+        audioSource.clip = audioClip1;
+        audioSource.Play();
         bronze.gameObject.SetActive(true);
         silver.gameObject.SetActive(false);
         gold.gameObject.SetActive(false);
@@ -23,6 +29,8 @@ public class ShopScript : MonoBehaviour {
 
     public void Silver()
     {
+        audioSource.clip = audioClip1;
+        audioSource.Play();
         bronze.gameObject.SetActive(false);
         silver.gameObject.SetActive(true);
         gold.gameObject.SetActive(false);
@@ -30,6 +38,8 @@ public class ShopScript : MonoBehaviour {
 
     public void Gold()
     {
+        audioSource.clip = audioClip1;
+        audioSource.Play();
         bronze.gameObject.SetActive(false);
         silver.gameObject.SetActive(false);
         gold.gameObject.SetActive(true);
@@ -37,6 +47,8 @@ public class ShopScript : MonoBehaviour {
 
     public void BuyBronze()
     {
+        audioSource.clip = ffClip;
+        audioSource.Play();
         if (playerInformation.coins >= 100)
         {
             playerInformation.coins -= 100;
@@ -52,7 +64,9 @@ public class ShopScript : MonoBehaviour {
 
     public void BuySilver()
     {
-        if(playerInformation.coins >= 200)
+        audioSource.clip = ffClip;
+        audioSource.Play();
+        if (playerInformation.coins >= 200)
         {
             playerInformation.coins -= 200;
             PlayerPrefs.SetInt("coins", playerInformation.coins);
@@ -67,6 +81,8 @@ public class ShopScript : MonoBehaviour {
 
     public void BuyGold()
     {
+        audioSource.clip = ffClip;
+        audioSource.Play();
         if (playerInformation.coins >= 300)
         {
             playerInformation.coins -= 300;

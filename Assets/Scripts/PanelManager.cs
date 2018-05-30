@@ -4,29 +4,79 @@ public class PanelManager : MonoBehaviour {
 
     public GameObject shop;
     public GameObject pack;
+    public Animator animatorShop;
+    public Animator animatorPack;
+    public AudioSource audioSource;
+    public AudioClip audioClip1;
+    public AudioClip audioClip2;
+
+    bool isShopOpen = false;
+    bool isOpeningOpen = false;
+
+    public void ShopOpenAndClose()
+    {
+        if (!isShopOpen)
+        {
+            isShopOpen = true;
+            animatorShop.SetBool("IsShopOpen", isShopOpen);
+        }
+        else
+        {
+            isShopOpen = false;
+            animatorShop.SetBool("IsShopOpen", isShopOpen);
+        }
+
+        PlayerPrefs.Save();
+    }
+
+    public void OpeningOpenAndClose()
+    {
+        if (!isOpeningOpen)
+        {
+            isOpeningOpen = true;
+            animatorPack.SetBool("IsOpeningOpen", isOpeningOpen);
+        }
+        else
+        {
+            isOpeningOpen = false;
+            animatorPack.SetBool("IsOpeningOpen", isOpeningOpen);
+        }
+
+        PlayerPrefs.Save();
+    }
 
     public void CloseShop()
     {
-        shop.SetActive(false);
+        ShopOpenAndClose();
+        audioSource.clip = audioClip2;
+        audioSource.Play();
     }
 
     public void OpenShop()
     {
-        shop.SetActive(true);
+        ShopOpenAndClose();
+        audioSource.clip = audioClip1;
+        audioSource.Play();
     }
 
     public void OpenPackOpening()
     {
-        pack.SetActive(true);
+        OpeningOpenAndClose();
+        audioSource.clip = audioClip1;
+        audioSource.Play();
     }
 
     public void ClosePackOpening()
     {
-        pack.SetActive(false);
+        OpeningOpenAndClose();
+        audioSource.clip = audioClip2;
+        audioSource.Play();
     }
 
     public void CloseGame()
     {
+        audioSource.clip = audioClip2;
+        audioSource.Play();
         PlayerPrefs.Save();
         Application.Quit();
     }

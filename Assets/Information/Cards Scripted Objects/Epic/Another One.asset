@@ -23,4 +23,4 @@ MonoBehaviour:
   cost: 10
   attack: 5
   health: 7
-  sellValue: 400
+  sellValue: 100

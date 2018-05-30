@@ -10,6 +10,9 @@ public class PackOpening : MonoBehaviour {
     public Pack packScript = null;
     Card randomCard;
 
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+
     public Pack bronze;
     public Pack silver;
     public Pack gold;
@@ -75,6 +78,8 @@ public class PackOpening : MonoBehaviour {
 
     public IEnumerator Open()
     {
+        audioSource.clip = audioClip;
+        audioSource.Play();
         yield return new WaitForSeconds(1f);
         Destroy(dropzone.d.gameObject);
         if (dropzone.d.gameObject.GetComponent<PackDisplay>().pack == bronze)
@@ -91,6 +96,7 @@ public class PackOpening : MonoBehaviour {
                 packCard.GetComponent<CardDisplay>().card = randomCard;
                 packCard.transform.localScale = new Vector3(1, 1, 1);
                 packCard.transform.position = cardPositions[i].position;
+                StartCoroutine(MoveObject(packCard, transform.position, cardPositions[i].position, 3.6f));
             }
         }
         else if (dropzone.d.gameObject.GetComponent<PackDisplay>().pack == silver)
@@ -107,6 +113,7 @@ public class PackOpening : MonoBehaviour {
                 packCard.GetComponent<CardDisplay>().card = randomCard;
                 packCard.transform.localScale = new Vector3(1, 1, 1);
                 packCard.transform.position = cardPositions[i].position;
+                StartCoroutine(MoveObject(packCard, transform.position, cardPositions[i].position, 3.6f));
             }
         }
         else if (dropzone.d.gameObject.GetComponent<PackDisplay>().pack == gold)
@@ -122,12 +129,28 @@ public class PackOpening : MonoBehaviour {
                 packCard.transform.SetParent(transform);
                 packCard.GetComponent<CardDisplay>().card = randomCard;
                 packCard.transform.localScale = new Vector3(1, 1, 1);
-                packCard.transform.position = cardPositions[i].position;
+                StartCoroutine(MoveObject(packCard, transform.position, cardPositions[i].position, 3.6f));
             }
         }
         PlayerPrefs.Save();
         yield return new WaitForSeconds(0.5f);
         addToCollection.gameObject.SetActive(true);
         yield return null;
+    }
+
+    public IEnumerator MoveObject(GameObject tempObject, Vector3 startPos, Vector3 endPos, float time)
+    {
+        float elapsedTime = 0;
+        tempObject.transform.position = startPos;
+
+        while (elapsedTime < time)
+        {
+            tempObject.transform.position = Vector3.Lerp(tempObject.transform.position, endPos, (elapsedTime / time));
+
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        tempObject.transform.position = endPos;
     }
 }

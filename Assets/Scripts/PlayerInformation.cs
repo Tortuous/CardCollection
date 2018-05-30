@@ -17,21 +17,30 @@ public class PlayerInformation : MonoBehaviour {
     public int coins = 0;
     public int packs = 0;
 
-    public string collectionString = "";
+    public string collectionString = null;
 
+    public PackOpening packOpening;
+    
     public GameObject prefabCard;
     public GameObject packBPrefab;
     public GameObject packSPrefab;
     public GameObject packGPrefab;
 
     public Transform packArea;
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+    public AudioClip audioClip2;
+    public AudioClip audioClip3;
 
     public Button addToCollection;
     public GameObject collectionParent;
+    public GameObject openingArea;
+
     public List<CardDisplay> collectedCards = new List<CardDisplay>();
     public List<Card> cardList = new List<Card>();
-    public CardDisplay[] playerCollection = new CardDisplay[50];
-    public GameObject openingArea;
+    public List<CardDisplay> playerCollection = new List<CardDisplay>();
+
+    public CardDisplay[] playColArray = new CardDisplay[50];
 
     private void Awake()
     {
@@ -42,7 +51,10 @@ public class PlayerInformation : MonoBehaviour {
         receivedStartCoins = PlayerPrefs.GetInt("receivedStartCoins");
         collectionString = PlayerPrefs.GetString("collectionString");
 
-        GetCollection(collectionString);
+        if(collectionString != null)
+        {
+            GetCollection(collectionString);
+        }
     }
 
     private void Start()
@@ -85,27 +97,49 @@ public class PlayerInformation : MonoBehaviour {
         packsText.text = packs.ToString();
     }
 
+    public void SellCard(CardDisplay cardD)
+    {
+        if(playerCollection.Count > 1)
+        {
+            audioSource.clip = audioClip;
+            audioSource.Play();
+            coins += cardD.card.sellValue;
+            PlayerPrefs.SetInt("coins", coins);
+
+            playerCollection.Remove(cardD);
+            collectedCards.Remove(cardD);
+            Destroy(cardD.gameObject);
+        }
+        SaveCollection(playerCollection);
+    }
+
     public void GetCardsFromPack()
     {
-        playerCollection = openingArea.GetComponentsInChildren<CardDisplay>();
+        playColArray = openingArea.GetComponentsInChildren<CardDisplay>();
+        foreach(CardDisplay card in playColArray)
+        {
+            playerCollection.Add(card);
+        }
 
         foreach (CardDisplay card in playerCollection)
         {
             collectedCards.Add(card);
         }
 
-        for (int i = 0; i < playerCollection.Length; i++)
+        for (int i = 0; i < playerCollection.Count; i++)
         {
             playerCollection[i].transform.SetParent(collectionParent.transform);
+            playerCollection[i].sellPanel.SetActive(true);
+            playerCollection[i].sellScript.playerInformation = this;
         }
-
         SaveCollection(playerCollection);
     }
 
     public void AddCollection()
     {
+        audioSource.clip = audioClip3;
+        audioSource.Play();
         GetCardsFromPack();
-
         addToCollection.gameObject.SetActive(false);
         PlayerPrefs.Save();
     }
@@ -114,6 +148,7 @@ public class PlayerInformation : MonoBehaviour {
     {
         string[] splitString = str.Split(new string[] { "#" }, StringSplitOptions.None);
 
+        playerCollection.Clear();
         for(int i = 0; i < splitString.Length; i++)
         {
             int x = 0;
@@ -123,19 +158,26 @@ public class PlayerInformation : MonoBehaviour {
                 GameObject card = Instantiate(prefabCard, transform.position, transform.rotation);
                 card.transform.SetParent(collectionParent.transform);
                 card.GetComponent<CardDisplay>().card = cardList[x];
-                card.gameObject.GetComponentInChildren<Button>().gameObject.SetActive(false);
+                card.transform.GetComponentInChildren<Button>().gameObject.SetActive(false);
                 card.transform.localScale = new Vector3(1, 1, 1);
+                card.GetComponent<CardDisplay>().sellPanel.SetActive(true);
+                card.GetComponent<CardDisplay>().sellScript.playerInformation = this;
+                playerCollection.Add(card.GetComponent<CardDisplay>());
             }
         }
     }
 
-    public void SaveCollection(CardDisplay[] array)
+    public void SaveCollection(List<CardDisplay> array)
     {
-        foreach(CardDisplay Card in array)
+        if(array.Count > 0)
         {
-            collectionString += '#' + Card.GetComponent<CardDisplay>().card.cardID.ToString();
+            collectionString = null;
+            foreach (CardDisplay Card in array)
+            {
+                collectionString += '#' + Card.GetComponent<CardDisplay>().card.cardID.ToString();
 
-            PlayerPrefs.SetString("collectionString", collectionString);
+                PlayerPrefs.SetString("collectionString", collectionString);
+            }
         }
     }
 }

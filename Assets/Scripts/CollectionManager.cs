@@ -6,11 +6,7 @@ using UnityEngine.UI;
 
 public class CollectionManager : MonoBehaviour {
 
-    public RectTransform collection;
     private Animator animator;
-
-    private List<Card> allCards = new List<Card>();
-    private List<Card> collectedCards = new List<Card>();
 
     bool isCollectionOpen = false;
 

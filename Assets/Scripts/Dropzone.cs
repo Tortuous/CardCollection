@@ -42,15 +42,6 @@ public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                 d.placeholderParent = this.transform;
             }
         }
-
-        if (eventData.pointerEnter.GetComponent<Draggable>().tag == "Card")
-        {
-            if(Input.GetKeyDown(KeyCode.S)){
-                playerInformation.coins += d.GetComponent<CardDisplay>().card.sellValue;
-                PlayerPrefs.SetInt("coins", playerInformation.coins);
-                Destroy(d.gameObject);
-            }
-        }
     }
 
     public void OnPointerExit(PointerEventData eventData)

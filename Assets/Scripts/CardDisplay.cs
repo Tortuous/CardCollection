@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour {
-
     public Card card;
 
+    public GameObject sellPanel;
+    public SellScript sellScript;
     public Text nameText;
     public Text descriptionText;
 
@@ -14,11 +15,11 @@ public class CardDisplay : MonoBehaviour {
     public Image artworkImage;
     public Image cardBackImage;
 
+    public Text valueText;
+
     public Text costText;
     public Text attackText;
     public Text healthText;
-    
-    PlayerInformation playerInformation;
 
 	void Start () {
 
@@ -28,6 +29,8 @@ public class CardDisplay : MonoBehaviour {
         rarityImage.sprite = card.raritySprite;
         artworkImage.sprite = card.artwork;
         cardBackImage.sprite = card.cardBack;
+
+        valueText.text += " " + card.sellValue.ToString();
 
         costText.text = card.cost.ToString();
         attackText.text = card.attack.ToString();
